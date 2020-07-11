@@ -21,7 +21,7 @@ const Controls = () => {
       enableDamping={true}
       enableZoom={false}
       minDistance={3}
-      rotateSpeed={0.7}
+      rotateSpeed={0.5}
       maxDistance={5}
       ref={orbitRef}
       args={[camera, gl.domElement]}
