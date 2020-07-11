@@ -22,7 +22,7 @@ function Spinner() {
       ref={spinningCube}
       position={[0, 1, 0]}>
       <boxBufferGeometry attach="geometry" args={[2, 2, 2]} />
-      <meshStandardMaterial attach="material" color={'#4FFF9C'} />
+      <meshNormalMaterial attach="material" color={'#4FFF9C'} />
     </a.mesh>
   );
 }
