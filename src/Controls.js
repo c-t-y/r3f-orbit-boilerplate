@@ -12,7 +12,19 @@ const Controls = () => {
     orbitRef.current.update();
   });
 
-  return <orbitControls autoRotate ref={orbitRef} args={[camera, gl.domElement]} />;
+  return (
+    <orbitControls
+      maxPolarAngle={Math.PI / 3}
+      minPolarAngle={Math.PI / 3}
+      enableDamping={true}
+      enableZoom={false}
+      minDistance={3}
+      rotateSpeed={0.2}
+      maxDistance={5}
+      ref={orbitRef}
+      args={[camera, gl.domElement]}
+    />
+  );
 };
 
 export default Controls;
