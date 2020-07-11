@@ -14,12 +14,14 @@ const Controls = () => {
 
   return (
     <orbitControls
+      autoRotate
+      autoRotateSpeed={10}
       maxPolarAngle={Math.PI / 3}
       minPolarAngle={Math.PI / 3}
       enableDamping={true}
       enableZoom={false}
       minDistance={3}
-      rotateSpeed={0.2}
+      rotateSpeed={0.7}
       maxDistance={5}
       ref={orbitRef}
       args={[camera, gl.domElement]}

@@ -7,11 +7,9 @@ import './App.css';
 function Spinner() {
   const spinningCube = useRef(null);
 
-  useFrame(() => {
-    // spinningCube.current.rotation.x += 0.01;
-  });
+  useFrame(() => {});
   return (
-    <mesh ref={spinningCube}>
+    <mesh ref={spinningCube} position={[0, 0, 0.5]}>
       <boxBufferGeometry attach="geometry" />
       <meshNormalMaterial attach="material" />
     </mesh>
