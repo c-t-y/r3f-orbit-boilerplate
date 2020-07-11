@@ -9,8 +9,8 @@ function Spinner() {
 
   useFrame(() => {});
   return (
-    <mesh ref={spinningCube} position={[0, 0, 0.5]}>
-      <boxBufferGeometry attach="geometry" />
+    <mesh ref={spinningCube} position={[0, 1, 0]}>
+      <boxBufferGeometry attach="geometry" args={[2, 2, 2]} />
       <meshNormalMaterial attach="material" />
     </mesh>
   );
