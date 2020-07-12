@@ -1,28 +1,37 @@
-import React, { useRef, useState } from 'react';
-import { Canvas, useFrame } from 'react-three-fiber';
+import React, { useState, useEffect } from 'react';
+import { Canvas } from 'react-three-fiber';
 import Controls from './Controls';
-import { useSpring, a } from 'react-spring/three';
-
+import Spinner from './Spinner';
+import SpinnerFast from './SpinnerFast';
 import './App.css';
 
-function Spinner() {
-  const spinningCube = useRef();
-
-  useFrame(() => {});
-  const [expand, setExpand] = useState(false);
-  const props = useSpring({ scale: expand ? [1.4, 1.4, 1.4] : [1, 1, 1] });
-
-  return (
-    <a.mesh
-      ref={spinningCube}
-      onClick={() => setExpand(!expand)}
-      scale={props.scale}
-      position={[0, 1, 0]}>
-      <boxBufferGeometry attach="geometry" args={[2, 2, 2]} />
-      <meshNormalMaterial attach="material" color={'#4FFF9C'} />
-    </a.mesh>
-  );
-}
+const Selector = () => {
+  const [selector, setSelector] = useState('Spinner');
+  useEffect(() => {
+    function setupKeyLogger() {
+      document.onkeydown = function (e) {
+        console.log(e);
+        if (e.keyCode === 65) {
+          setSelector('spinnerFast');
+        }
+      };
+    }
+    setupKeyLogger();
+  });
+  if (selector === 'Spinner') {
+    return (
+      <>
+        <Spinner />
+      </>
+    );
+  } else if (selector === 'spinnerFast') {
+    return (
+      <>
+        <SpinnerFast />
+      </>
+    );
+  }
+};
 
 function App() {
   return (
@@ -41,7 +50,7 @@ function App() {
           shadow-camera-bottom={-10}
         />
         <Controls />
-        <Spinner />
+        <Selector />
       </Canvas>
     </div>
   );
